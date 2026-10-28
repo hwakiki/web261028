@@ -1,37 +1,42 @@
-// document.write("외부 스크립트 ");
+// script.js : 내 영화 평점 통계(콘솔판)
+// 작성자 : 황규영(2651075)
+const titles = ["아이언맨"," 아이언맨2"," 아이언맨3", "인터스텔라","스파이더맨: 브랜드 뉴 데이"];
+const ratings = [7.7,6.9,6.9,8.4,8.4];
+const years = [2008,2010,2013,2014,2026];
+let sum = 0;
+for (let i = 0; i < ratings.length; i++) {
+ sum = sum + ratings[i];
+}
+console.log("합계:", sum);
+const average = sum / ratings.length;
+console.log("평균:", average);
 
-console.log('확장프로그램으로출력');
+let max = ratings[0];
+let maxIndex = 0;
+for (let i = 0; i < ratings.length; i++){
+    if (ratings[i] > max){
+        max = ratings[i];
+        maxIndex = i;
+    }
+}
+console.log("최고:", titles[maxIndex], max);
 
-let num =10;
-num =30;
-console.log(num);
+let count = 0;
+for (let i = 0; i < ratings.length; i++) {
+    if (ratings[i] >= 8) {
+        count++;
+    }
+}
+console.log("8점 이상:", count + "편");
 
-
-
-let string1 = "Hello, world!";
-let string2 = 'Hello, world';
-console.log(string1);
-console.log(string2);
-
-
-
-let dan = 3;
-let gugu = 8;
-
-let string = `${dan} 곱하기 ${gugu}은 ${dan * gugu} 입니다.`; 
-console.log(string);
-
-let studentScore = {
- koreaScore:80,
- englishScore : 70,
- mathScore :90,
- sciendceScore :60
-};
-
-console.log(studentScore.koreanScore);
-console.log(studentScore['englishScore']);
-
-for(let i=1; i<9;i++){
-    console.log(`i: ${i * 3}`);
-    
+for (let i = 0; i < ratings.length; i++) {
+    let label;
+    if (ratings[i] >= 8.5) {
+        label = "명작";
+    } else if (ratings[i] >= 7) {
+        label = "추천";
+    } else {
+        label = "보통";
+    }
+    console.log(titles[i] + " (" + years[i] + ") : " + ratings[i] + " " + label);
 }
